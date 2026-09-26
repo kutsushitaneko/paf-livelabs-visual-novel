@@ -1,0 +1,376 @@
+{
+  "schemaVersion": 1,
+  "contentVersion": "26.7-ja-slice-1",
+  "title": "Netflixデータを調べるエージェントを作る",
+  "lab": "Lab 2",
+  "task": "Task 1",
+  "startSceneId": "l2t1-00-intro",
+  "scenes": [
+    {
+      "id": "l2t1-00-intro",
+      "type": "dialogue",
+      "speaker": "ミナ",
+      "speakerRole": "ナビゲーター",
+      "title": "表のデータに答える専門家を作ります",
+      "body": [
+        "このTaskでは、Netflixの表を調べるData Analysis Agentを作ります。",
+        "公開できたかだけでなく、回答の根拠になったSQLまで確認しましょう。"
+      ],
+      "characterAssetId": "ch-mina-normal",
+      "backgroundAssetId": "bg-lab2-data-studio",
+      "hint": "このガイドとAgent Factoryを別のタブで開くと、手順を見失いにくくなります。",
+      "next": "l2t1-01-prereq"
+    },
+    {
+      "id": "l2t1-01-prereq",
+      "type": "checkpoint",
+      "speaker": "パル",
+      "speakerRole": "ワークショップ・アシスタント",
+      "title": "始める前に二つだけ確認してください",
+      "body": [
+        "Agent Factoryへ管理者またはEditorとしてサインインしていること、生成モデルを利用できることを確認します。"
+      ],
+      "instruction": {
+        "label": "開始条件",
+        "text": "Agent Factoryへサインインし、利用する生成モデルが構成済みであることを確認します。"
+      },
+      "interaction": {
+        "type": "confirm",
+        "options": [
+          {
+            "id": "ready",
+            "label": "二つとも確認した",
+            "feedback": "準備できました。次はサンプル・データセットを取り込みます。"
+          }
+        ]
+      },
+      "characterAssetId": "ch-pal-alert",
+      "backgroundAssetId": "bg-lab2-data-studio",
+      "hint": "モデルを選べない場合は、Lab 1の初回セットアップとLLM構成を先に確認してください。",
+      "next": "l2t1-02-import"
+    },
+    {
+      "id": "l2t1-02-import",
+      "type": "action",
+      "speaker": "ミナ",
+      "speakerRole": "ナビゲーター",
+      "title": "NetflixサンプルをDatasetsから取り込みます",
+      "body": [
+        "画面を更新し、ステータスがImportedになるまで待ちます。処理中は同じ操作を繰り返さないでください。"
+      ],
+      "instruction": {
+        "label": "実際の画面で操作",
+        "text": "Datasetsを開き、Netflix Titles Datasetをインポートします。ステータスがImportedになったことを確認します。"
+      },
+      "interaction": {
+        "type": "confirm",
+        "options": [
+          {
+            "id": "imported",
+            "label": "Importedになった",
+            "feedback": "取り込み完了です。サンプル表をエージェントから選べるようになりました。"
+          }
+        ]
+      },
+      "screenshotAssetId": "ss-lab2-da-import",
+      "characterAssetId": "ch-mina-explain",
+      "backgroundAssetId": "bg-lab2-data-studio",
+      "hint": "26.7ではData Analysis Agentsではなく、Datasetsからサンプルを取り込みます。",
+      "next": "l2t1-03-why-datasets"
+    },
+    {
+      "id": "l2t1-03-why-datasets",
+      "type": "quiz",
+      "speaker": "パル",
+      "speakerRole": "ワークショップ・アシスタント",
+      "title": "26.7でサンプル取り込みを始める画面は？",
+      "body": [
+        "ここまでの操作を一度だけ確認します。間違えても、解説を読めばそのまま先へ進めます。"
+      ],
+      "interaction": {
+        "type": "quiz",
+        "options": [
+          {
+            "id": "datasets",
+            "label": "Datasets",
+            "correct": true,
+            "feedback": "そのとおりです。26.7ではDatasetsからNetflixサンプルを取り込みます。"
+          },
+          {
+            "id": "agents",
+            "label": "Data Analysis Agents",
+            "correct": false,
+            "feedback": "旧版ではこの画面から始める説明がありました。26.7ではDatasetsから取り込みます。"
+          },
+          {
+            "id": "builder",
+            "label": "Agent Builder",
+            "correct": false,
+            "feedback": "Agent Builderは独自フローを組む画面です。サンプルの取り込みはDatasetsで行います。"
+          }
+        ]
+      },
+      "characterAssetId": "ch-pal-normal",
+      "backgroundAssetId": "bg-lab2-data-studio",
+      "hint": "直前に操作したナビゲーション項目を思い出してください。",
+      "next": "l2t1-04-create"
+    },
+    {
+      "id": "l2t1-04-create",
+      "type": "action",
+      "speaker": "ミナ",
+      "speakerRole": "ナビゲーター",
+      "title": "Data Analysis Agentの作成を始めます",
+      "body": [
+        "データセットの準備が済んだので、ここからエージェント本体を作ります。"
+      ],
+      "instruction": {
+        "label": "実際の画面で操作",
+        "text": "Data Analysis Agentsを開き、Create Agentを選択します。"
+      },
+      "interaction": {
+        "type": "confirm",
+        "options": [
+          {
+            "id": "opened",
+            "label": "作成画面を開いた",
+            "feedback": "次は、先ほど取り込んだデータの場所を指定します。"
+          }
+        ]
+      },
+      "screenshotAssetId": "ss-lab2-da-create",
+      "characterAssetId": "ch-mina-explain",
+      "backgroundAssetId": "bg-lab2-data-studio",
+      "hint": "左側のナビゲーションからData Analysis Agentsを開きます。",
+      "next": "l2t1-05-select"
+    },
+    {
+      "id": "l2t1-05-select",
+      "type": "action",
+      "speaker": "パル",
+      "speakerRole": "ワークショップ・アシスタント",
+      "title": "データベースと表を順に選びます",
+      "body": [
+        "似た名前の表がある場合は、所有者と完全な表名まで確認してください。"
+      ],
+      "instruction": {
+        "label": "実際の画面で操作",
+        "text": "Applied AI DatasetsデータベースとADMIN.AAI_DATASETS_NETFLIX_TITLES_DATASETを選び、次へ進みます。"
+      },
+      "interaction": {
+        "type": "confirm",
+        "options": [
+          {
+            "id": "selected",
+            "label": "データベースと表を選択した",
+            "feedback": "対象データを指定できました。エージェントの名前と役割を設定します。"
+          }
+        ]
+      },
+      "screenshotAssetId": "ss-lab2-da-create",
+      "characterAssetId": "ch-pal-normal",
+      "backgroundAssetId": "bg-lab2-data-studio",
+      "hint": "表名はADMINから始まる完全名で照合します。",
+      "next": "l2t1-06-configure"
+    },
+    {
+      "id": "l2t1-06-configure",
+      "type": "action",
+      "speaker": "ミナ",
+      "speakerRole": "ナビゲーター",
+      "title": "名前だけでなく、役割が伝わる説明を書きます",
+      "body": [
+        "ほかのエージェントから呼び出す予定がある場合は、Help Descriptionに利用方法と入出力が伝わる説明を加えます。"
+      ],
+      "instruction": {
+        "label": "実際の画面で操作",
+        "text": "名前にNetflix Analysis、説明にNetflixデータを分析するエージェントと入力します。必要に応じてHelp Descriptionも入力します。"
+      },
+      "interaction": {
+        "type": "confirm",
+        "options": [
+          {
+            "id": "configured",
+            "label": "名前と説明を入力した",
+            "feedback": "用途を説明できる設定になりました。公開前に、少しだけ関心を教えてください。"
+          }
+        ]
+      },
+      "screenshotAssetId": "ss-lab2-da-config",
+      "characterAssetId": "ch-mina-explain",
+      "backgroundAssetId": "bg-lab2-data-studio",
+      "hint": "説明は、接続するデータと用途が後から分かる文章にします。",
+      "next": "l2t1-07-interest"
+    },
+    {
+      "id": "l2t1-07-interest",
+      "type": "choice",
+      "speaker": "ミナ",
+      "speakerRole": "ナビゲーター",
+      "title": "次に深掘りするなら、どちらが気になりますか？",
+      "body": [
+        "正解を選ぶ問題ではありません。選択は最終回の振り返りに使い、このTaskの進み方は変わりません。"
+      ],
+      "interaction": {
+        "type": "interest",
+        "options": [
+          {
+            "id": "data",
+            "label": "表やSQLを安全に扱う設計",
+            "interest": "data",
+            "feedback": "データへの関心を記録しました。公開後は、生成されたSQLを一緒に確認します。"
+          },
+          {
+            "id": "builder",
+            "label": "ほかのエージェントから呼び出す設計",
+            "interest": "builder",
+            "feedback": "フロー設計への関心を記録しました。Help Descriptionは、その入口になります。"
+          }
+        ]
+      },
+      "characterAssetId": "ch-mina-normal",
+      "backgroundAssetId": "bg-lab2-data-studio",
+      "hint": "迷った場合は、いま業務で試してみたいほうを選んでください。後から選び直せます。",
+      "next": "l2t1-08-publish"
+    },
+    {
+      "id": "l2t1-08-publish",
+      "type": "action",
+      "speaker": "ミナ",
+      "speakerRole": "ナビゲーター",
+      "title": "設定を確認してエージェントを公開します",
+      "body": [
+        "名前、対象表、説明を確認してから公開します。公開操作は、エージェントを利用可能な状態にする区切りです。"
+      ],
+      "instruction": {
+        "label": "実際の画面で操作",
+        "text": "Publishを選択し、Data Analysis Agentを公開します。"
+      },
+      "interaction": {
+        "type": "confirm",
+        "options": [
+          {
+            "id": "published",
+            "label": "公開した",
+            "feedback": "公開できました。次は、初回のデータ探索が終わるまで待ちます。"
+          }
+        ]
+      },
+      "screenshotAssetId": "ss-lab2-da-publish",
+      "characterAssetId": "ch-mina-explain",
+      "backgroundAssetId": "bg-lab2-data-studio",
+      "hint": "公開前に、選択したデータベースと表がNetflixサンプルであることを再確認します。",
+      "next": "l2t1-09-explore"
+    },
+    {
+      "id": "l2t1-09-explore",
+      "type": "checkpoint",
+      "speaker": "パル",
+      "speakerRole": "ワークショップ・アシスタント",
+      "title": "初回のデータ探索が終わるまで待ちます",
+      "body": [
+        "Open Agentを選ぶと、最初にデータの探索が実行されます。質問例が表示されれば準備完了です。"
+      ],
+      "instruction": {
+        "label": "画面で確認",
+        "text": "Open Agentを選択し、初回探索の完了後に質問例が表示されたことを確認します。"
+      },
+      "interaction": {
+        "type": "confirm",
+        "options": [
+          {
+            "id": "examples-visible",
+            "label": "質問例が表示された",
+            "feedback": "エージェントへ質問できる状態になりました。"
+          }
+        ]
+      },
+      "characterAssetId": "ch-pal-normal",
+      "backgroundAssetId": "bg-lab2-data-studio",
+      "hint": "探索中は画面を閉じず、質問例が出るまで待ちます。",
+      "next": "l2t1-10-query"
+    },
+    {
+      "id": "l2t1-10-query",
+      "type": "action",
+      "speaker": "ミナ",
+      "speakerRole": "ナビゲーター",
+      "title": "件数を尋ね、回答の中身を開きます",
+      "body": [
+        "説明やグラフだけで判断せず、構造化データと生成されたSQLも開いて確認します。"
+      ],
+      "instruction": {
+        "label": "実際の画面で操作",
+        "text": "「どの公開年の作品数が最も多いですか」と質問し、説明、可視化、構造化データ、生成されたSQLを確認します。"
+      },
+      "interaction": {
+        "type": "confirm",
+        "options": [
+          {
+            "id": "answer-visible",
+            "label": "回答とSQLを確認した",
+            "feedback": "回答だけでなく、その根拠へたどり着けました。最後に確認問題です。"
+          }
+        ]
+      },
+      "screenshotAssetId": "ss-lab2-da-query",
+      "characterAssetId": "ch-mina-explain",
+      "backgroundAssetId": "bg-lab2-data-studio",
+      "hint": "回答内の展開項目から、生成されたSQLを表示します。",
+      "next": "l2t1-11-review-sql"
+    },
+    {
+      "id": "l2t1-11-review-sql",
+      "type": "quiz",
+      "speaker": "パル",
+      "speakerRole": "ワークショップ・アシスタント",
+      "title": "回答を利用する前に確認するものは？",
+      "body": [
+        "自然な文章や速い応答だけでは、集計条件が正しいか判断できません。"
+      ],
+      "interaction": {
+        "type": "quiz",
+        "options": [
+          {
+            "id": "sql",
+            "label": "生成されたSQLと対象データ",
+            "correct": true,
+            "feedback": "そのとおりです。対象表、絞り込み、集計条件が質問に合っているか確認します。"
+          },
+          {
+            "id": "natural",
+            "label": "回答文が自然かどうかだけ",
+            "correct": false,
+            "feedback": "自然な文章でも集計条件が誤っている場合があります。生成SQLと対象データを確認します。"
+          },
+          {
+            "id": "speed",
+            "label": "回答が速いかどうかだけ",
+            "correct": false,
+            "feedback": "応答速度は、集計内容の正しさを保証しません。生成SQLと対象データを確認します。"
+          }
+        ]
+      },
+      "screenshotAssetId": "ss-lab2-da-query",
+      "characterAssetId": "ch-pal-alert",
+      "backgroundAssetId": "bg-lab2-data-studio",
+      "hint": "文章の外側にある、回答の根拠を探してください。",
+      "next": "l2t1-12-recap"
+    },
+    {
+      "id": "l2t1-12-recap",
+      "type": "recap",
+      "speaker": "ミナ",
+      "speakerRole": "ナビゲーター",
+      "title": "Data Analysis Agentを一体、公開できました",
+      "body": [
+        "Netflixサンプルの取り込みから、エージェントの作成、公開、質問、SQL確認まで完了しました。",
+        "この縦切り版の進捗はブラウザ内だけに保存されています。サーバーへ操作履歴や入力内容は送信していません。"
+      ],
+      "characterAssetId": "ch-mina-achievement",
+      "backgroundAssetId": "bg-lab2-data-studio",
+      "hint": "別の選択を試す場合は、戻るボタンで関心選択まで戻れます。",
+      "next": null
+    }
+  ]
+}

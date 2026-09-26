@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "assets": {
+    "bg-lab2-data-studio": {
+      "src": "assets/backgrounds/lab2-data-studio-v1.png",
+      "kind": "background",
+      "status": "generated-v1",
+      "alt": "青とシアンの照明に包まれ、抽象的なグラフが浮かぶ明るいデータ分析スタジオ"
+    },
+    "ch-mina-normal": {
+      "src": "assets/characters/mina-normal-v1.png",
+      "kind": "character",
+      "status": "generated-v1",
+      "alt": "落ち着いた笑顔で正面を見るナビゲーターのミナ"
+    },
+    "ch-mina-explain": {
+      "src": "assets/characters/mina-explain-v1.png",
+      "kind": "character",
+      "status": "generated-v1",
+      "alt": "片手を開き、次の手順を説明するナビゲーターのミナ"
+    },
+    "ch-mina-achievement": {
+      "src": "assets/characters/mina-achievement-v1.png",
+      "kind": "character",
+      "status": "generated-v1",
+      "alt": "小さく拳を上げ、Taskの完了を喜ぶナビゲーターのミナ"
+    },
+    "ch-pal-normal": {
+      "src": "assets/characters/pal-normal-v1.png",
+      "kind": "character",
+      "status": "generated-v1",
+      "alt": "白と紺の丸い外装にシアンの目を持つ浮遊アシスタントのパル"
+    },
+    "ch-pal-alert": {
+      "src": "assets/characters/pal-alert-v1.png",
+      "kind": "character",
+      "status": "generated-v1",
+      "alt": "フィンを上げ、上部の橙色ランプで注意を知らせる浮遊アシスタントのパル"
+    },
+    "ss-lab2-da-import": {
+      "src": "assets/screenshots/lab2-da-import-legacy.png",
+      "kind": "screenshot",
+      "status": "legacy-verify",
+      "productVersion": "pre-26.7",
+      "alt": "Netflix Titles Datasetを取り込むサンプル画面",
+      "caption": "26.7ではDatasetsからNetflixサンプルを取り込みます。"
+    },
+    "ss-lab2-da-create": {
+      "src": "assets/screenshots/lab2-da-create-legacy.png",
+      "kind": "screenshot",
+      "status": "legacy-verify",
+      "productVersion": "pre-26.7",
+      "alt": "Data Analysis Agentでデータベースと表を選択する画面",
+      "caption": "Applied AI DatasetsとNetflix Titles Datasetの表を選択します。"
+    },
+    "ss-lab2-da-config": {
+      "src": "assets/screenshots/lab2-da-config-legacy.png",
+      "kind": "screenshot",
+      "status": "legacy-verify",
+      "productVersion": "pre-26.7",
+      "alt": "Data Analysis Agentの名前と説明を設定する画面",
+      "caption": "後から用途が分かる名前と説明を設定します。"
+    },
+    "ss-lab2-da-publish": {
+      "src": "assets/screenshots/lab2-da-publish-legacy.png",
+      "kind": "screenshot",
+      "status": "legacy-verify",
+      "productVersion": "pre-26.7",
+      "alt": "Data Analysis Agentを公開する画面",
+      "caption": "対象データと説明を確認してから公開します。"
+    },
+    "ss-lab2-da-query": {
+      "src": "assets/screenshots/lab2-da-query-legacy.png",
+      "kind": "screenshot",
+      "status": "legacy-verify",
+      "productVersion": "pre-26.7",
+      "alt": "Netflixデータへの質問に、説明とグラフで回答する画面",
+      "caption": "回答に加えて、構造化データと生成されたSQLを確認します。"
+    }
+  }
+}

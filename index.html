@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Private Agent Factory 26.7ハンズオンを、会話と操作カードで進める非公式の学習ガイドです。">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
+  <title>Agent Factory Studio｜Lab 2 Task 1</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles/app.css">
+  <script type="module" src="scripts/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#scene-title">シーン本文へ移動</a>
+
+  <div class="app-shell" id="app" data-loading="true">
+    <header class="topbar">
+      <div class="brand-block">
+        <span class="brand-kicker">Private Agent Factory 26.7 ハンズオン</span>
+        <span class="brand-title">Agent Factory Studio</span>
+      </div>
+
+      <div class="progress-block" aria-label="進捗">
+        <span id="progress-label">準備中</span>
+        <progress id="progress" max="13" value="0">0 / 13</progress>
+      </div>
+
+      <button class="icon-button" id="settings-button" type="button" aria-haspopup="dialog" aria-controls="settings-dialog">
+        <span aria-hidden="true">⚙</span>
+        <span>設定</span>
+      </button>
+    </header>
+
+    <main class="stage" id="main-content">
+      <section class="visual-panel" aria-label="登場人物と舞台">
+        <img class="stage-background" id="background-image" alt="" decoding="async">
+        <div class="stage-shade" aria-hidden="true"></div>
+        <img class="character-card" id="character-image" alt="" decoding="async">
+        <div class="chapter-chip">
+          <span>Lab 2 · Task 1</span>
+          <strong>Netflixデータを調べるエージェントを作る</strong>
+        </div>
+      </section>
+
+      <section class="story-panel" aria-live="polite" aria-atomic="false">
+        <div class="scene-meta">
+          <span class="scene-type" id="scene-type">ガイド</span>
+          <span class="scene-position" id="scene-position">1 / 13</span>
+        </div>
+
+        <div class="speaker-row">
+          <span class="speaker-name" id="speaker-name">ミナ</span>
+          <span class="speaker-role" id="speaker-role">ナビゲーター</span>
+        </div>
+
+        <h1 id="scene-title" tabindex="-1">読み込み中です</h1>
+        <div class="scene-copy" id="scene-copy">
+          <p>シナリオと画像を準備しています。</p>
+        </div>
+
+        <aside class="instruction-card" id="instruction-card" hidden>
+          <span class="instruction-label" id="instruction-label">実際の画面で操作</span>
+          <p id="instruction-text"></p>
+        </aside>
+
+        <figure class="screenshot-card" id="screenshot-card" hidden>
+          <button class="screenshot-button" id="screenshot-button" type="button" aria-haspopup="dialog" aria-controls="image-dialog">
+            <img id="screenshot-image" alt="" loading="lazy" decoding="async">
+            <span class="zoom-label">画像を拡大</span>
+          </button>
+          <figcaption>
+            <span id="screenshot-caption"></span>
+            <span class="legacy-note" id="legacy-note" hidden>旧版画像・現行画面と照合してください</span>
+          </figcaption>
+        </figure>
+
+        <div class="response-area" id="response-area"></div>
+        <div class="feedback" id="feedback" role="status" hidden></div>
+
+        <div class="hint" id="hint" hidden>
+          <strong>ヒント</strong>
+          <p id="hint-text"></p>
+        </div>
+
+        <nav class="scene-controls" aria-label="シーン操作">
+          <button class="secondary-button" id="back-button" type="button">戻る</button>
+          <button class="secondary-button" id="hint-button" type="button" aria-expanded="false" aria-controls="hint">ヒント</button>
+          <button class="primary-button" id="next-button" type="button">次へ</button>
+        </nav>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>非公式の教育用ガイドです。実際の操作では、所属組織のルールと現行のOracle公式ドキュメントを優先してください。</p>
+      <button class="text-button" id="restart-button" type="button">最初からやり直す</button>
+    </footer>
+  </div>
+
+  <dialog class="settings-dialog" id="settings-dialog">
+    <form method="dialog">
+      <div class="dialog-heading">
+        <div>
+          <span class="dialog-kicker">表示設定</span>
+          <h2>読みやすさを調整する</h2>
+        </div>
+        <button class="icon-button close-button" value="close" aria-label="設定を閉じる">×</button>
+      </div>
+
+      <label class="toggle-row">
+        <span>
+          <strong>コントラストを上げる</strong>
+          <small>背景と文字の差を強くします。</small>
+        </span>
+        <input id="contrast-toggle" type="checkbox">
+      </label>
+
+      <label class="toggle-row">
+        <span>
+          <strong>動きを減らす</strong>
+          <small>画面切り替えのアニメーションを止めます。</small>
+        </span>
+        <input id="motion-toggle" type="checkbox">
+      </label>
+
+      <button class="primary-button dialog-done" value="close">設定を閉じる</button>
+    </form>
+  </dialog>
+
+  <dialog class="image-dialog" id="image-dialog">
+    <form method="dialog">
+      <button class="icon-button image-close" value="close" aria-label="拡大画像を閉じる">×</button>
+      <img id="dialog-image" alt="">
+      <p id="dialog-caption"></p>
+    </form>
+  </dialog>
+
+  <dialog class="confirm-dialog" id="confirm-dialog">
+    <form method="dialog">
+      <span class="dialog-kicker">進捗をリセット</span>
+      <h2>最初からやり直しますか？</h2>
+      <p>このブラウザに保存した進捗と選択内容を削除します。</p>
+      <div class="confirm-actions">
+        <button class="secondary-button" value="cancel">キャンセル</button>
+        <button class="danger-button" id="confirm-restart" value="confirm">削除してやり直す</button>
+      </div>
+    </form>
+  </dialog>
+
+  <noscript>
+    <p class="noscript-message">このガイドを利用するにはJavaScriptを有効にしてください。</p>
+  </noscript>
+</body>
+</html>
